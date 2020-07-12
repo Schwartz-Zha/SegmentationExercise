@@ -4,6 +4,7 @@ import torch
 from . import utils
 from .engine import train_one_epoch, evaluate
 from .Helper import get_transform
+from PIL import Image
 
 # use our dataset and defined transformations
 dataset = PennFudanDataset('/home/billy/Downloads/Dataset/PennFudanPed', get_transform(train=True))
@@ -58,10 +59,15 @@ for epoch in range(num_epochs):
     evaluate(model, data_loader_test, device=device)
 
 
+torch.save(model.state_dict(), 'ckpt/10_epoch_model.pt')
 
-# pick one image from the test set
-img, _ = dataset_test[0]
-# put the model in evaluation mode
-model.eval()
-with torch.no_grad():
-    prediction = model([img.to(device)])
+
+# # pick one image from the test set
+# img, _ = dataset_test[0]
+# # put the model in evaluation mode
+# model.eval()
+# with torch.no_grad():
+#     prediction = model([img.to(device)])
+#
+# Image.fromarray(img.mul(255).permute(1, 2, 0).byte().numpy())
+# Image.fromarray(prediction[0]['masks'][0, 0].mul(255).byte().cpu().numpy())
