@@ -1,8 +1,6 @@
-# For data augmentation and transformation
-
-
-from . import utils
-from . import transforms as T
+# For data augmentation and transformatio
+import utils
+import transforms as T
 
 
 def get_transform(train):

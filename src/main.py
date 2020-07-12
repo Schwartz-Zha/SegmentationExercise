@@ -1,9 +1,9 @@
-from .Dataset import PennFudanDataset
-from .Model import get_instance_segmentation_model
+from Dataset import PennFudanDataset
+from Model import get_instance_segmentation_model
 import torch
-from . import utils
-from .engine import train_one_epoch, evaluate
-from .Helper import get_transform
+import utils
+from engine import train_one_epoch, evaluate
+from Helper import get_transform
 from PIL import Image
 
 # use our dataset and defined transformations
